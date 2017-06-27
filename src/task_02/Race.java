@@ -5,7 +5,11 @@ import java.util.ArrayList;
 public class Race {
     private ArrayList<Duck> ducks;
     private boolean raceIsFihished = false;
-    private int winnerNum;
+    private int winner;
+
+    public Race() {
+        start();
+    }
 
     private void createRace() {
         boolean everybodyIsShot = true;
@@ -20,7 +24,7 @@ public class Race {
         }
     }
 
-    public void start() {
+    private void start() {
         createRace();
         System.out.println(Text.RACE_WELCOME);
         for (int i = 0; i < Modifier.NUM_OF_PATRICIPANTS; i++) {
@@ -29,7 +33,7 @@ public class Race {
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-            System.out.print(String.format(Text.RASER_NUMBER, i + 1) + " ");
+            System.out.print(String.format(Text.RAСER_NUMBER, i + 1) + " ");
             ducks.get(i).Display();
         }
 
@@ -51,7 +55,7 @@ public class Race {
                 if (ducks.get(i).isFinished()) {
                     System.out.println(String.format(Text.IS_WINNER, i + 1));
                     raceIsFihished = true;
-                    winnerNum = i + 1;
+                    winner = i + 1;
                     break;
                 }
             }
@@ -65,7 +69,7 @@ public class Race {
         }
     }
 
-    public int getWinnerNum() {
-        return winnerNum;
+    public int getWinner() {
+        return winner;
     }
 }
