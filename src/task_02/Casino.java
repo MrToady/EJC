@@ -6,7 +6,7 @@ import java.io.InputStreamReader;
 
 public class Casino {
 
-    int betNumber;
+    private int betNumber;
 
     public Casino() {
         System.out.println(Text.CASINO_WELCOME);
@@ -60,7 +60,7 @@ public class Casino {
     }
 
 
-    public boolean WantToPlayAgain() {
+    private boolean WantToPlayAgain() {
         System.out.println(Text.CASINO_PLAY_AGAIN);
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         while (true) {
