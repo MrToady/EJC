@@ -28,10 +28,4 @@ class Text {
     static final String CASINO_PLAYER_LOSE = "К сожалению, вы проиграли.";
     static final String CASINO_PLAYER_CANNOT_PLAY = "К сожалению у вас недостаточно средств чтобы сделать ставку. Были рады вам!";
     static final String PLAYER_BALANCE = "У вас на счету %d$.";
-
-
-
-
-
-
 }
