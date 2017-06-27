@@ -7,6 +7,6 @@ public class HealthyDuck extends Duck{
 
     @Override
     public void Display() {
-        System.out.println("Я здоровая утка!");
+        System.out.println(Text.HEALTHY_DUCK_DISPLAY);
     }
 }

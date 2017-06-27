@@ -7,6 +7,6 @@ public class ShotDuck extends Duck{
 
     @Override
     public void Display() {
-        System.out.println("Я подстрелянная утка((");
+        System.out.println(Text.SHOT_DUCK_DISPLAY);
     }
 }
