@@ -4,61 +4,40 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
+/**
+ * Creates Casino, implements user interaction
+ */
 public class Casino {
     private int betNumber;
 
     public Casino() {
         System.out.println(Text.CASINO_WELCOME);
-        startPlay();
-    }
-
-    private void startPlay(){
         Player player = new Player();
         while (WantToPlayAgain()) {
-            if (player.isEmpty()) {
+            if (player.hasNoMoney()) {
                 System.out.println(Text.CASINO_PLAYER_CANNOT_PLAY);
                 return;
             }
             player.printBalance();
-            acceptABet();
+            takeBet();
             player.bet();
             Race race = new Race();
             if (race.getWinner() == betNumber) {
                 System.out.println(Text.CASINO_PLAYER_WIN);
                 player.win();
                 player.printBalance();
-            }
-            else {
+            } else {
                 System.out.println(Text.CASINO_PLAYER_LOSE);
                 player.printBalance();
             }
         }
     }
 
-
-    private void acceptABet() {
-        System.out.println(String.format(Text.CASINO_WANT_TO_BET, Modifier.NUM_OF_PATRICIPANTS));
-        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-        boolean answerIsCorrect = false;
-        while (!answerIsCorrect) {
-            try {
-                betNumber = Integer.parseInt(reader.readLine());
-                if (betNumber <= 0 || betNumber > Modifier.NUM_OF_PATRICIPANTS)
-                    System.out.println(String.format(Text.CASINO_WRONG_NUMBER, Modifier.NUM_OF_PATRICIPANTS));
-                else {
-                    System.out.println(String.format(Text.CASINO_YOUR_BET, betNumber));
-                    //reader.close();
-                    answerIsCorrect = true;
-                }
-            } catch (IOException e) {
-                e.printStackTrace();
-            } catch (NumberFormatException e) {
-                System.out.println(Text.CASINO_NUMBER_FORMAT_EXCEPTION);
-            }
-        }
-    }
-
-
+    /**
+     * Asks if user wants to start another iteration
+     *
+     * @return true or false
+     */
     private boolean WantToPlayAgain() {
         System.out.println(Text.CASINO_PLAY_AGAIN);
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
@@ -80,6 +59,32 @@ public class Casino {
                 }
             } catch (IOException e) {
                 e.printStackTrace();
+            }
+        }
+    }
+
+    /**
+     * Asks user number of duck to bet on
+     * Writes it in Casino betNumber field
+     */
+    private void takeBet() {
+        System.out.println(String.format(Text.CASINO_WANT_TO_BET, Modifier.NUM_OF_PATRICIPANTS));
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+        boolean answerIsCorrect = false;
+        while (!answerIsCorrect) {
+            try {
+                betNumber = Integer.parseInt(reader.readLine());
+                if (betNumber <= 0 || betNumber > Modifier.NUM_OF_PATRICIPANTS)
+                    System.out.println(String.format(Text.CASINO_WRONG_NUMBER, Modifier.NUM_OF_PATRICIPANTS));
+                else {
+                    System.out.println(String.format(Text.CASINO_YOUR_BET, betNumber));
+                    //reader.close();
+                    answerIsCorrect = true;
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            } catch (NumberFormatException e) {
+                System.out.println(Text.CASINO_NUMBER_FORMAT_EXCEPTION);
             }
         }
     }
