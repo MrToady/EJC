@@ -1,6 +1,11 @@
 package task_02;
 
 public class FlyWithRandomSpeed implements FlyBehavior {
+
+    /**
+     * Generates random speed according {@link Modifier} class*
+     * @return int speed
+     */
     @Override
     public int fly() {
         int minSpeed = Modifier.MIN_SPEED;
