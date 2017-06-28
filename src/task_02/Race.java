@@ -2,15 +2,30 @@ package task_02;
 
 import java.util.ArrayList;
 
+/**
+ * Creates and starts a new Race
+ */
 public class Race {
+    /**
+     * List of this race patricipans
+     */
     private ArrayList<Duck> ducks;
+    /**
+     * flag indicating winner availability
+     */
     private boolean raceIsFihished = false;
+    /**
+     * winner number
+     */
     private int winner;
 
     public Race() {
         start();
     }
 
+    /**
+     * Creating a new list of patricipans
+     */
     private void createRace() {
         boolean everybodyIsShot = true;
         while (everybodyIsShot) {
@@ -36,7 +51,6 @@ public class Race {
             System.out.print(String.format(Text.RAСER_NUMBER, i + 1) + " ");
             ducks.get(i).Display();
         }
-
         for (String command : new String[]{Text.RACERS_IS_READY, Text.READY, Text.STEADY, Text.GO}
                 ) {
             try {
@@ -46,7 +60,6 @@ public class Race {
             }
             System.out.println(command);
         }
-
         while (!raceIsFihished) {
             for (int i = 0; i < Modifier.NUM_OF_PATRICIPANTS; i++) {
                 int flewInThisSecond = ducks.get(i).performFly();
@@ -59,7 +72,6 @@ public class Race {
                     break;
                 }
             }
-
             System.out.println();
             try {
                 Thread.sleep(1000);

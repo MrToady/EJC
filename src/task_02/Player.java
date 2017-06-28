@@ -1,21 +1,24 @@
 package task_02;
 
-class Player {
+public class Player {
+    /**
+     * Contains player's balance
+     */
     private int cash = Modifier.START_CASH;
 
-    void win() {
+    public void win() {
         cash += Modifier.WIN_CASH;
     }
 
-    void bet() {
+    public void bet() {
         cash -= Modifier.BET_CASH;
     }
 
-    boolean isEmpty() {
-        return cash <= 0;
+    public boolean hasNoMoney() {
+        return cash < Modifier.BET_CASH;
     }
 
-    void printBalance() {
+    public void printBalance() {
         System.out.println(String.format(Text.PLAYER_BALANCE, cash));
     }
 }
