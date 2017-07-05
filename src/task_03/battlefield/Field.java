@@ -7,7 +7,7 @@ import java.util.HashSet;
 import java.util.Iterator;
 
 /**
- * Contains condition of battlefield
+ * Contains condition of the battlefield
  */
 public class Field {
     /**
@@ -41,7 +41,7 @@ public class Field {
 
     /**
      * Changes value of corresponding points of battlefield to "busy".
-     * Add ship in ships set
+     * Add ship to ships set
      *
      * @param ship - ship that will be located on the field
      */
@@ -58,7 +58,7 @@ public class Field {
      * Removes ship if it is "killed" from ships set
      * Prints messages about hitting
      *
-     * @param shotCoor - point which player chose to shoot
+     * @param shotCoor - point which player has chosen to shoot
      */
     public void addShot(Coordinate shotCoor) {
         Iterator<Ship> iter = ships.iterator();

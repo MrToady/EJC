@@ -14,7 +14,7 @@ public class Ship {
      */
     private Coordinate[] occupiedSpace;
     /**
-     * Contains number of "healthy" points of this ship
+     * Contains number of "health points" of this ship
      */
     private int health;
 
@@ -29,7 +29,7 @@ public class Ship {
     }
 
     /**
-     * Generates random list of points given length according to battlefield size and already occupied points
+     * Generates random list of points by length according to battlefield size and already occupied points
      *
      * @param field  - field on which ship will be located
      * @param length - required length
@@ -90,7 +90,7 @@ public class Ship {
     }
 
     /**
-     * Checks if points for ship location is already occupied
+     * Checks if points for ship location are already occupied
      *
      * @return true or false
      */
@@ -109,7 +109,7 @@ public class Ship {
     }
 
     /**
-     * Checks if points for ship location is in borders of battlefield
+     * Checks if points for ship location are in borders of the battlefield
      *
      * @return true or false
      */
@@ -131,7 +131,7 @@ public class Ship {
     }
 
     /**
-     * Checks if ship has "healthy" points
+     * Checks if ship has "health points"
      *
      * @return true or false
      */

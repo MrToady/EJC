@@ -15,7 +15,7 @@ import java.util.HashSet;
  */
 public class Player {
     /**
-     * Contains the set of coordinates that player already has chosen
+     * Contains the set of coordinates that player has already chosen
      *
      * @see Coordinate
      */
@@ -38,7 +38,7 @@ public class Player {
     }
 
     /**
-     * Asks player coordinate by one of the axes to shoot
+     * Asks player about coordinate by one of the axes to shoot
      * Checks if the coordinate is suitable to this battlefield
      *
      * @return coordinate from console
@@ -62,7 +62,7 @@ public class Player {
     }
 
     /**
-     * Collects coordinates values. Checks if proposed point was chose before
+     * Collects coordinates values. Checks if suggested point was chosen before
      *
      * @return new point to shoot
      * @see Coordinate
