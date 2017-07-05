@@ -10,15 +10,39 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.HashSet;
 
+/**
+ * Describes interaction with player
+ */
 public class Player {
+    /**
+     * Contains the set of coordinates that player already has chosen
+     *
+     * @see Coordinate
+     */
     private HashSet<Coordinate> shootedPoints;
+    /**
+     * Contains this player's battlefield
+     *
+     * @see Field
+     */
     private Field field;
 
+    /**
+     * Creates new object
+     *
+     * @param field - player's battlefield
+     */
     public Player(Field field) {
         this.field = field;
         this.shootedPoints = new HashSet<>();
     }
 
+    /**
+     * Asks player coordinate by one of the axes to shoot
+     * Checks if the coordinate is suitable to this battlefield
+     *
+     * @return coordinate from console
+     */
     private static int coordinateInput() {
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         int coordinate;
@@ -37,10 +61,12 @@ public class Player {
         return coordinate;
     }
 
-    public Field getField() {
-        return field;
-    }
-
+    /**
+     * Collects coordinates values. Checks if proposed point was chose before
+     *
+     * @return new point to shoot
+     * @see Coordinate
+     */
     public Coordinate shot() {
         int x;
         int y;
@@ -62,6 +88,15 @@ public class Player {
         }
     }
 
+    public Field getField() {
+        return field;
+    }
+
+    /**
+     * Checks if user has "alive" ships
+     *
+     * @return true or false
+     */
     public boolean allKilled() {
         return this.field.allKilled();
     }

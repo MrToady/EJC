@@ -1,5 +1,8 @@
 package task_03.battlefield;
 
+/**
+ * Describes abstract point in Cartesian coordinate system
+ */
 public class Coordinate {
     private int x;
     private int y;

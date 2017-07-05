@@ -2,6 +2,9 @@ package task_03.mod;
 
 import java.util.HashMap;
 
+/**
+ * Class for storing text messages
+ */
 public class Text {
     public static final String GAME_WELCOME = "Здравствуйте! Перед вами трехмерная игра \"Морской бой\". \n" +
             "На трехмерном поле размером 6х6х6 клеток размещены 10 кораблей - \n" +

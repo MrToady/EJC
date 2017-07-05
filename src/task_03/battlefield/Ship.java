@@ -5,23 +5,47 @@ import task_03.mod.Text;
 
 import java.util.Random;
 
+/**
+ * Contains ship logic
+ */
 public class Ship {
+    /**
+     * Contains list of points occupied by this ship
+     */
     private Coordinate[] occupiedSpace;
+    /**
+     * Contains number of "healthy" points of this ship
+     */
     private int health;
 
+    /**
+     * Creates a new ship
+     *
+     * @param occupiedSpace - list of points occupied by this ship
+     */
     private Ship(Coordinate[] occupiedSpace) {
         this.occupiedSpace = occupiedSpace;
         this.health = occupiedSpace.length;
     }
 
+    /**
+     * Generates random list of points given length according to battlefield size and already occupied points
+     *
+     * @param field  - field on which ship will be located
+     * @param length - required length
+     * @return new ship
+     */
     public static Ship getNewInstance(Field field, int length) {
         boolean correct = false;
         Coordinate[] occupiedSpace = new Coordinate[length];
         Random random = new Random();
+        int x;
+        int y;
+        int z;
         while (!correct) {
-            int x = random.nextInt(field.getField().length);
-            int y = random.nextInt(field.getField().length);
-            int z = random.nextInt(field.getField().length);
+            x = random.nextInt(field.getField().length);
+            y = random.nextInt(field.getField().length);
+            z = random.nextInt(field.getField().length);
             Coordinate bow = new Coordinate(x, y, z);
             String direction = Directions.values()[random.nextInt(Directions.values().length)].toString();
             occupiedSpace = new Coordinate[length];
@@ -65,8 +89,13 @@ public class Ship {
         return newShip;
     }
 
-    private static boolean isAvailableToPlace(Coordinate[] occupiedSpase, Field field) {
-        for (Coordinate coor : occupiedSpase
+    /**
+     * Checks if points for ship location is already occupied
+     *
+     * @return true or false
+     */
+    private static boolean isAvailableToPlace(Coordinate[] occupiedSpace, Field field) {
+        for (Coordinate coor : occupiedSpace
                 ) {
             for (int i = Math.max(0, coor.getX() - 1); i < Math.min(field.getField().length, coor.getX() + 2); i++) {
                 for (int j = Math.max(0, coor.getY() - 1); j < Math.min(field.getField().length, coor.getY() + 2); j++) {
@@ -79,8 +108,13 @@ public class Ship {
         return true;
     }
 
-    private static boolean isInBorders(Coordinate[] occupiedSpase, Field field) {
-        for (Coordinate coor : occupiedSpase
+    /**
+     * Checks if points for ship location is in borders of battlefield
+     *
+     * @return true or false
+     */
+    private static boolean isInBorders(Coordinate[] occupiedSpace, Field field) {
+        for (Coordinate coor : occupiedSpace
                 ) {
             if (coor.getX() >= field.getField().length) return false;
             if (coor.getX() < 0) return false;
@@ -96,6 +130,11 @@ public class Ship {
         this.health--;
     }
 
+    /**
+     * Checks if ship has "healthy" points
+     *
+     * @return true or false
+     */
     public boolean isKilled() {
         return this.health == 0;
     }

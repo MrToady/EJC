@@ -1,5 +1,10 @@
 package task_03.battlefield;
 
+/**
+ * Contains and sets condition of battlefield's point
+ *
+ * @see Field
+ */
 public class FieldPoint {
     private boolean busy;
 
