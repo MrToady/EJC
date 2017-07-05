@@ -1,16 +1,17 @@
 package task_03.battlefield;
 
 import task_03.mod.Directions;
-import task_03.mod.Settings;
 import task_03.mod.Text;
 
 import java.util.Random;
 
 public class Ship {
     private Coordinate[] occupiedSpace;
+    private int health;
 
     private Ship(Coordinate[] occupiedSpace) {
         this.occupiedSpace = occupiedSpace;
+        this.health = occupiedSpace.length;
     }
 
     public static Ship getNewInstance(Field field, int length) {
@@ -57,7 +58,7 @@ public class Ship {
                     }
                     break;
             }
-            correct = inBorders(occupiedSpace, field) && isAvailableToPlace(occupiedSpace, field);
+            correct = isInBorders(occupiedSpace, field) && isAvailableToPlace(occupiedSpace, field);
         }
         Ship newShip = new Ship(occupiedSpace);
         field.placeShip(newShip);
@@ -78,7 +79,7 @@ public class Ship {
         return true;
     }
 
-    private static boolean inBorders(Coordinate[] occupiedSpase, Field field) {
+    private static boolean isInBorders(Coordinate[] occupiedSpase, Field field) {
         for (Coordinate coor : occupiedSpase
                 ) {
             if (coor.getX() >= field.getField().length) return false;
@@ -91,6 +92,14 @@ public class Ship {
         return true;
     }
 
+    public void reduceHealth() {
+        this.health--;
+    }
+
+    public boolean isKilled() {
+        return this.health == 0;
+    }
+
     public Coordinate[] getOccupiedSpace() {
         return occupiedSpace;
     }
@@ -98,9 +107,9 @@ public class Ship {
     @Override
     public String toString() {
         StringBuilder builder = new StringBuilder(Text.DECKS.get(this.occupiedSpace.length));
-
-        for (Coordinate coor: this.occupiedSpace
-             ) { builder.append(coor.toString()).append("\n");
+        for (Coordinate coor : this.occupiedSpace
+                ) {
+            builder.append(coor.toString()).append("\n");
         }
         return builder.toString();
     }
