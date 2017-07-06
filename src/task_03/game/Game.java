@@ -55,6 +55,7 @@ public class Game {
                         return true;
                     case "н":
                         System.out.println(Text.GAME_NO_START);
+                        reader.close();
                         return false;
                     default:
                         System.out.println(Text.GAME_WRONG_ANSWER);
