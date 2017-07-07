@@ -9,7 +9,7 @@ public class Zlatopolsky9116 {
 
     public static boolean isPalindrom(String input) {
         char[] sChars = input.replace(" ", "").toCharArray();
-        for (int i = 0; i < sChars.length; i++) {
+        for (int i = 0; i < sChars.length/2 + 1; i++) {
             if (sChars[i] != sChars[sChars.length - i - 1]) return false;
         }
         return true;
