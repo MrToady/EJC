@@ -3,12 +3,12 @@ package task_03.battlefield;
 /**
  * Describes abstract point in Cartesian coordinate system
  */
-public class Coordinate {
+public class Point {
     private int x;
     private int y;
     private int z;
 
-    public Coordinate(int x, int y, int z) {
+    public Point(int x, int y, int z) {
         this.x = x;
         this.y = y;
         this.z = z;
@@ -35,7 +35,7 @@ public class Coordinate {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Coordinate that = (Coordinate) o;
+        Point that = (Point) o;
         if (x != that.x) return false;
         if (y != that.y) return false;
         return z == that.z;

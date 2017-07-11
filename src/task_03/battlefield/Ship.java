@@ -12,7 +12,7 @@ public class Ship {
     /**
      * Contains list of points occupied by this ship
      */
-    private Coordinate[] occupiedSpace;
+    private Point[] occupiedSpace;
     /**
      * Contains number of "health points" of this ship
      */
@@ -23,7 +23,7 @@ public class Ship {
      *
      * @param occupiedSpace - list of points occupied by this ship
      */
-    private Ship(Coordinate[] occupiedSpace) {
+    private Ship(Point[] occupiedSpace) {
         this.occupiedSpace = occupiedSpace;
         this.health = occupiedSpace.length;
     }
@@ -32,12 +32,12 @@ public class Ship {
      * Generates random list of points by length according to battlefield size and already occupied points
      *
      * @param field  - field on which ship will be located
-     * @param length - required length
+     * @param requiredLength - required length
      * @return new ship
      */
-    public static Ship getNewInstance(Field field, int length) {
+    public static Ship getNewInstance(Field field, int requiredLength) {
         boolean correct = false;
-        Coordinate[] occupiedSpace = new Coordinate[length];
+        Point[] occupiedSpace = new Point[requiredLength];
         Random random = new Random();
         int x;
         int y;
@@ -46,39 +46,39 @@ public class Ship {
             x = random.nextInt(field.getField().length);
             y = random.nextInt(field.getField().length);
             z = random.nextInt(field.getField().length);
-            Coordinate bow = new Coordinate(x, y, z);
+            Point shipBow = new Point(x, y, z);
             String direction = Directions.values()[random.nextInt(Directions.values().length)].toString();
-            occupiedSpace = new Coordinate[length];
+            occupiedSpace = new Point[requiredLength];
 
             switch (direction) {
                 case "RIGHT":
-                    for (int i = 0; i < length; i++) {
-                        occupiedSpace[i] = new Coordinate(bow.getX() + i, bow.getY(), bow.getZ());
+                    for (int i = 0; i < requiredLength; i++) {
+                        occupiedSpace[i] = new Point(shipBow.getX() + i, shipBow.getY(), shipBow.getZ());
                     }
                     break;
                 case "LEFT":
-                    for (int i = 0; i < length; i++) {
-                        occupiedSpace[i] = new Coordinate(bow.getX() - i, bow.getY(), bow.getZ());
+                    for (int i = 0; i < requiredLength; i++) {
+                        occupiedSpace[i] = new Point(shipBow.getX() - i, shipBow.getY(), shipBow.getZ());
                     }
                     break;
                 case "UP":
-                    for (int i = 0; i < length; i++) {
-                        occupiedSpace[i] = new Coordinate(bow.getX(), bow.getY() + i, bow.getZ());
+                    for (int i = 0; i < requiredLength; i++) {
+                        occupiedSpace[i] = new Point(shipBow.getX(), shipBow.getY() + i, shipBow.getZ());
                     }
                     break;
                 case "DOWN":
-                    for (int i = 0; i < length; i++) {
-                        occupiedSpace[i] = new Coordinate(bow.getX(), bow.getY() - i, bow.getZ());
+                    for (int i = 0; i < requiredLength; i++) {
+                        occupiedSpace[i] = new Point(shipBow.getX(), shipBow.getY() - i, shipBow.getZ());
                     }
                     break;
                 case "FORWARD":
-                    for (int i = 0; i < length; i++) {
-                        occupiedSpace[i] = new Coordinate(bow.getX(), bow.getY(), bow.getZ() + i);
+                    for (int i = 0; i < requiredLength; i++) {
+                        occupiedSpace[i] = new Point(shipBow.getX(), shipBow.getY(), shipBow.getZ() + i);
                     }
                     break;
                 case "BACKWARD":
-                    for (int i = 0; i < length; i++) {
-                        occupiedSpace[i] = new Coordinate(bow.getX(), bow.getY(), bow.getZ() - i);
+                    for (int i = 0; i < requiredLength; i++) {
+                        occupiedSpace[i] = new Point(shipBow.getX(), shipBow.getY(), shipBow.getZ() - i);
                     }
                     break;
             }
@@ -94,12 +94,12 @@ public class Ship {
      *
      * @return true or false
      */
-    private static boolean isAvailableToPlace(Coordinate[] occupiedSpace, Field field) {
-        for (Coordinate coor : occupiedSpace
+    private static boolean isAvailableToPlace(Point[] occupiedSpace, Field field) {
+        for (Point point : occupiedSpace
                 ) {
-            for (int i = Math.max(0, coor.getX() - 1); i < Math.min(field.getField().length, coor.getX() + 2); i++) {
-                for (int j = Math.max(0, coor.getY() - 1); j < Math.min(field.getField().length, coor.getY() + 2); j++) {
-                    for (int k = Math.max(0, coor.getZ() - 1); k < Math.min(field.getField().length, coor.getZ() + 2); k++) {
+            for (int i = Math.max(0, point.getX() - 1); i < Math.min(field.getField().length, point.getX() + 2); i++) {
+                for (int j = Math.max(0, point.getY() - 1); j < Math.min(field.getField().length, point.getY() + 2); j++) {
+                    for (int k = Math.max(0, point.getZ() - 1); k < Math.min(field.getField().length, point.getZ() + 2); k++) {
                         if (field.getField()[i][j][k].isBusy()) return false;
                     }
                 }
@@ -113,15 +113,15 @@ public class Ship {
      *
      * @return true or false
      */
-    private static boolean isInBorders(Coordinate[] occupiedSpace, Field field) {
-        for (Coordinate coor : occupiedSpace
+    private static boolean isInBorders(Point[] occupiedSpace, Field field) {
+        for (Point point : occupiedSpace
                 ) {
-            if (coor.getX() >= field.getField().length) return false;
-            if (coor.getX() < 0) return false;
-            if (coor.getY() >= field.getField().length) return false;
-            if (coor.getY() < 0) return false;
-            if (coor.getZ() >= field.getField().length) return false;
-            if (coor.getZ() < 0) return false;
+            if (point.getX() >= field.getField().length) return false;
+            if (point.getX() < 0) return false;
+            if (point.getY() >= field.getField().length) return false;
+            if (point.getY() < 0) return false;
+            if (point.getZ() >= field.getField().length) return false;
+            if (point.getZ() < 0) return false;
         }
         return true;
     }
@@ -139,16 +139,16 @@ public class Ship {
         return this.health == 0;
     }
 
-    public Coordinate[] getOccupiedSpace() {
+    public Point[] getOccupiedSpace() {
         return occupiedSpace;
     }
 
     @Override
     public String toString() {
         StringBuilder builder = new StringBuilder(Text.DECKS.get(this.occupiedSpace.length));
-        for (Coordinate coor : this.occupiedSpace
+        for (Point point : this.occupiedSpace
                 ) {
-            builder.append(coor.toString()).append("\n");
+            builder.append(point.toString()).append("\n");
         }
         return builder.toString();
     }

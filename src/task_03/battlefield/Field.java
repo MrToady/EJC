@@ -36,7 +36,6 @@ public class Field {
                 ships.add(Ship.getNewInstance(this, 4 - i));
             }
         }
-        //ships.forEach(ship -> System.out.println(ship.toString()));
     }
 
     /**
@@ -46,9 +45,9 @@ public class Field {
      * @param ship - ship that will be located on the field
      */
     public void placeShip(Ship ship) {
-        for (Coordinate coor : ship.getOccupiedSpace()
+        for (Point point : ship.getOccupiedSpace()
                 ) {
-            field[coor.getX()][coor.getY()][coor.getZ()].isBusyNow();
+            field[point.getX()][point.getY()][point.getZ()].isBusyNow();
         }
         ships.add(ship);
     }
@@ -58,15 +57,15 @@ public class Field {
      * Removes ship if it is "killed" from ships set
      * Prints messages about hitting
      *
-     * @param shotCoor - point which player has chosen to shoot
+     * @param shotPoint - point which player has chosen to shoot
      */
-    public void addShot(Coordinate shotCoor) {
+    public void addShot(Point shotPoint) {
         Iterator<Ship> iter = ships.iterator();
         while (iter.hasNext()) {
             Ship ship = iter.next();
-            for (Coordinate shipCoor : ship.getOccupiedSpace()
+            for (Point shipPoint : ship.getOccupiedSpace()
                     ) {
-                if (shipCoor.equals(shotCoor)) {
+                if (shipPoint.equals(shotPoint)) {
                     ship.reduceHealth();
                     if (ship.isKilled()) {
                         ships.remove(ship);
