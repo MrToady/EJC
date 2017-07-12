@@ -31,7 +31,7 @@ public class Ship {
     /**
      * Generates random list of points by length according to battlefield size and already occupied points
      *
-     * @param field  - field on which ship will be located
+     * @param field          - field on which ship will be located
      * @param requiredLength - required length
      * @return new ship
      */
@@ -42,41 +42,42 @@ public class Ship {
         int x;
         int y;
         int z;
+        int randomDirection;
         while (!correct) {
             x = random.nextInt(field.getField().length);
             y = random.nextInt(field.getField().length);
             z = random.nextInt(field.getField().length);
             Point shipBow = new Point(x, y, z);
-            String direction = Directions.values()[random.nextInt(Directions.values().length)].toString();
+            randomDirection = random.nextInt(Directions.values().length);
             occupiedSpace = new Point[requiredLength];
 
-            switch (direction) {
-                case "RIGHT":
+            switch (Directions.values()[randomDirection]) {
+                case RIGHT:
                     for (int i = 0; i < requiredLength; i++) {
                         occupiedSpace[i] = new Point(shipBow.getX() + i, shipBow.getY(), shipBow.getZ());
                     }
                     break;
-                case "LEFT":
+                case LEFT:
                     for (int i = 0; i < requiredLength; i++) {
                         occupiedSpace[i] = new Point(shipBow.getX() - i, shipBow.getY(), shipBow.getZ());
                     }
                     break;
-                case "UP":
+                case UP:
                     for (int i = 0; i < requiredLength; i++) {
                         occupiedSpace[i] = new Point(shipBow.getX(), shipBow.getY() + i, shipBow.getZ());
                     }
                     break;
-                case "DOWN":
+                case DOWN:
                     for (int i = 0; i < requiredLength; i++) {
                         occupiedSpace[i] = new Point(shipBow.getX(), shipBow.getY() - i, shipBow.getZ());
                     }
                     break;
-                case "FORWARD":
+                case FORWARD:
                     for (int i = 0; i < requiredLength; i++) {
                         occupiedSpace[i] = new Point(shipBow.getX(), shipBow.getY(), shipBow.getZ() + i);
                     }
                     break;
-                case "BACKWARD":
+                case BACKWARD:
                     for (int i = 0; i < requiredLength; i++) {
                         occupiedSpace[i] = new Point(shipBow.getX(), shipBow.getY(), shipBow.getZ() - i);
                     }
