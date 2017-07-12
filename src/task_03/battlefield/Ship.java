@@ -42,16 +42,15 @@ public class Ship {
         int x;
         int y;
         int z;
-        int randomDirection;
         while (!correct) {
             x = random.nextInt(field.getField().length);
             y = random.nextInt(field.getField().length);
             z = random.nextInt(field.getField().length);
             Point shipBow = new Point(x, y, z);
-            randomDirection = random.nextInt(Directions.values().length);
+            Directions direction = Directions.values()[random.nextInt(Directions.values().length)];
             occupiedSpace = new Point[requiredLength];
 
-            switch (Directions.values()[randomDirection]) {
+            switch (direction) {
                 case RIGHT:
                     for (int i = 0; i < requiredLength; i++) {
                         occupiedSpace[i] = new Point(shipBow.getX() + i, shipBow.getY(), shipBow.getZ());
