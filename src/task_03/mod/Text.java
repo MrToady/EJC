@@ -20,7 +20,7 @@ public class Text {
     public static final String GAME_NO_START = "Игра завершена.";
     public static final String GAME_WRONG_ANSWER = "Введите 'д' для положительного ответа или 'н' - для отрицательного";
     public static final String GAME_COORDINATE = "Введите координату выстрела по оси ";
-    public static final String GAME_NUMBER_FORMAT_EXCEPTION = "Введите координату корректно.";
+    public static final String GAME_NUMBER_FORMAT = "Введите координату корректно.";
     public static final String GAME_WRONG_NUMBER = "Введите число от 0 до %d";
     public static final String GAME_WRONG_POINT = "Вы уже обстреливали эту точку.";
     public static final String GAME_INJURED = "Попадание! Корабль ранен.";

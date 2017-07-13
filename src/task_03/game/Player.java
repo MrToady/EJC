@@ -46,19 +46,23 @@ public class Player {
     private static int coordinateInput() {
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         int coordinate;
-        while (true) try {
-            String coordinateString;
-            coordinateString = reader.readLine();
-            if (!coordinateString.matches("[-+]?\\d+")) {
-                System.out.println(Text.GAME_NUMBER_FORMAT_EXCEPTION);
-            } else {
-                coordinate = Integer.parseInt(coordinateString);
-                if (coordinate < 0 || coordinate >= Settings.FIELD_SIZE) {
-                    System.out.println(String.format(Text.GAME_WRONG_NUMBER, Settings.FIELD_SIZE - 1));
-                } else break;
+        while (true) {
+            try {
+                String coordinateString;
+                coordinateString = reader.readLine();
+                if (!coordinateString.matches("[-+]?\\d+")) {
+                    System.out.println(Text.GAME_NUMBER_FORMAT);
+                } else {
+                    coordinate = Integer.parseInt(coordinateString);
+                    if (coordinate < 0 || coordinate >= Settings.FIELD_SIZE) {
+                        System.out.println(String.format(Text.GAME_WRONG_NUMBER, Settings.FIELD_SIZE - 1));
+                    } else {
+                        break;
+                    }
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
             }
-        } catch (IOException e) {
-            e.printStackTrace();
         }
         return coordinate;
     }
@@ -75,15 +79,16 @@ public class Player {
         int z;
         Point shotPoint;
         while (true) {
-            System.out.print(Text.GAME_COORDINATE + "X: ");
+            System.out.printf("%sX: ", Text.GAME_COORDINATE);
             x = coordinateInput();
-            System.out.print(Text.GAME_COORDINATE + "Y: ");
+            System.out.printf("%sY: ", Text.GAME_COORDINATE);
             y = coordinateInput();
-            System.out.print(Text.GAME_COORDINATE + "Z: ");
+            System.out.printf("%sZ: ", Text.GAME_COORDINATE);
             z = coordinateInput();
             shotPoint = new Point(x, y, z);
-            if (shootedPoints.contains(shotPoint)) System.out.println(Text.GAME_WRONG_POINT);
-            else {
+            if (shootedPoints.contains(shotPoint)) {
+                System.out.println(Text.GAME_WRONG_POINT);
+            } else {
                 shootedPoints.add(shotPoint);
                 return shotPoint;
             }
