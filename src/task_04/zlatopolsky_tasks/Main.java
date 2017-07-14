@@ -3,18 +3,22 @@ package task_04.zlatopolsky_tasks;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
         Main main = new Main();
         try (BufferedReader reader = new BufferedReader(new InputStreamReader(System.in))) {
-            System.out.println(main.getOddLetters(reader));
+//            System.out.println(main.getOddLetters(reader));
+            System.out.println(main.maxSequenceOfIdenticalSymbols(reader));
+            System.out.println(main.identicalLettersCounter(reader));
+
         } catch (IOException e) {
             e.printStackTrace();
         }
-        System.out.println(main.isPalindrome("АРГЕНТИНА МАНИТ НЕГРА"));
-        System.out.println(main.isPalindrome("ПОТ КАК ПОТОП"));
-        System.out.println(main.isPalindrome("А РОЗА УПАЛА НА ЛАПУ АЗОРА"));
+//        System.out.println(main.isPalindrome("АРГЕНТИНА МАНИТ НЕГРА"));
+//        System.out.println(main.isPalindrome("ПОТ КАК ПОТОП"));
+//        System.out.println(main.isPalindrome("А РОЗА УПАЛА НА ЛАПУ АЗОРА"));
     }
 
     /*Задача 9.43
@@ -42,4 +46,58 @@ public class Main {
         }
         return true;
     }
+
+    /*Задача 9.153
+    * Дан текст. Найти наибольшее количество идущих подряд одинаковых символов.*/
+    private int maxSequenceOfIdenticalSymbols(BufferedReader reader) {
+        String inputString;
+        while (true) {
+            try {
+                inputString = reader.readLine();
+                if (!inputString.matches("[A-z]*")) {
+                    System.out.println("Wrong input");
+                } else {
+                    break;
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        int maxSequence = 0;
+        int countOfIdenticalSymbols = 0;
+        for (int i = 0; i < inputString.length() - 1; i++) {
+            if (inputString.toCharArray()[i] == inputString.toCharArray()[i + 1]) {
+                countOfIdenticalSymbols++;
+            } else {
+                maxSequence = Math.max(countOfIdenticalSymbols + 1, maxSequence);
+                countOfIdenticalSymbols = 0;
+            }
+        }
+        maxSequence = Math.max(countOfIdenticalSymbols + 1, maxSequence);
+        return maxSequence;
+    }
+
+    /*Задача 9.154
+    * Дано слово. Определить сколько различных букв в нем.*/
+    private int identicalLettersCounter(BufferedReader reader) {
+        String inputString;
+        while (true) {
+            try {
+                inputString = reader.readLine();
+                if (!inputString.matches("[A-z]*")) {
+                    System.out.println("Wrong input");
+                } else {
+                    break;
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        Set<Character> charSet = new HashSet<>();
+        for (Character character : inputString.toCharArray()) {
+            charSet.add(character);
+        }
+        return charSet.size();
+    }
 }
+
