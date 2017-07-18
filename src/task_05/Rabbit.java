@@ -3,18 +3,23 @@ package task_05;
 import java.io.IOException;
 
 /**
- * Многопоточное приложение в котором кролик ест морковку
- * пока пользователь не введет какой-нибудь символ с консоли.
+ * Creates two threads
+ *
+ * @see ThreadFlagSetter
+ * @see ThreadRabbitEatsCarrot
  */
 public class Rabbit {
-    public volatile static boolean flag = true;
+    private volatile static boolean enterWasntPressed = true;
 
     public static void main(String[] args) {
         new Rabbit.ThreadRabbitEatsCarrot().start();
         new Rabbit.ThreadFlagSetter().start();
     }
 
-    public static class ThreadFlagSetter extends Thread {
+    /**
+     * Switches the flag value to "false" after pressing "Enter"
+     */
+    private static class ThreadFlagSetter extends Thread {
         @Override
         public void run() {
             try {
@@ -22,14 +27,17 @@ public class Rabbit {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            flag = false;
+            enterWasntPressed = false;
         }
     }
 
-    public static class ThreadRabbitEatsCarrot extends Thread {
+    /**
+     * Prints "I'm eating carrot." until {@code flag} is {@code true}.
+     */
+    private static class ThreadRabbitEatsCarrot extends Thread {
         @Override
         public void run() {
-            while (flag) {
+            while (enterWasntPressed) {
                 System.err.println("I'm eating carrot.");
             }
         }
