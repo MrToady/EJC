@@ -1,4 +1,4 @@
-group 'tut.lyubaya.hueta'
+group 'GroupName'
 version '1.0-SNAPSHOT'
 
 apply plugin: 'java'
