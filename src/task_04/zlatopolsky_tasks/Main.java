@@ -9,16 +9,19 @@ public class Main {
     public static void main(String[] args) {
         Main main = new Main();
         try (BufferedReader reader = new BufferedReader(new InputStreamReader(System.in))) {
-//            System.out.println(main.getOddLetters(reader));
+//          Task 9.43 test
+            System.out.println(main.getOddLetters(reader));
+//          Task 9.153 test
             System.out.println(main.maxSequenceOfIdenticalSymbols(reader));
+//          Task 9.154 test
             System.out.println(main.identicalLettersCounter(reader));
-
         } catch (IOException e) {
             e.printStackTrace();
         }
-//        System.out.println(main.isPalindrome("АРГЕНТИНА МАНИТ НЕГРА"));
-//        System.out.println(main.isPalindrome("ПОТ КАК ПОТОП"));
-//        System.out.println(main.isPalindrome("А РОЗА УПАЛА НА ЛАПУ АЗОРА"));
+//      Task 9.116 test
+        System.out.println(main.isPalindrome("АРГЕНТИНА МАНИТ НЕГРА"));
+        System.out.println(main.isPalindrome("ПОТ КАК ПОТОП"));
+        System.out.println(main.isPalindrome("А РОЗА УПАЛА НА ЛАПУ АЗОРА"));
     }
 
     /*Задача 9.43
@@ -39,10 +42,10 @@ public class Main {
     *б) ПОТ КАК ПОТОП;
     *в) А РОЗА УПАЛА НА ЛАПУ АЗОРА.
     *Во всех задачах последние символы "_", полученные после удаления пробелов, не учитывать.*/
-    private boolean isPalindrome(String checkedString) {
-        char[] checkedStringChars = checkedString.replace(" ", "").toCharArray();
-        for (int i = 0; i < checkedStringChars.length / 2 + 1; i++) {
-            if (checkedStringChars[i] != checkedStringChars[checkedStringChars.length - i - 1]) return false;
+    private boolean isPalindrome(String testString) {
+        char[] testStringChars = testString.replace(" ", "").toCharArray();
+        for (int i = 0; i < testStringChars.length / 2 + 1; i++) {
+            if (testStringChars[i] != testStringChars[testStringChars.length - i - 1]) return false;
         }
         return true;
     }
