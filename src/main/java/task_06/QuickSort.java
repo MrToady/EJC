@@ -32,6 +32,9 @@ public class QuickSort {
                 if (input.matches("[-+]?\\d+")) {
                     resultCollection.add(Integer.parseInt(input));
                 }
+                else {
+                    System.out.println("Wrong input");
+                }
             }
         } catch (IOException e) {
             e.printStackTrace();
