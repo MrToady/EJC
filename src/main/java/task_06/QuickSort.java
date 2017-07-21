@@ -7,24 +7,19 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 /*
-* Создать коллекцию из чисел через бафф реадер
-* ввести с клавиатуры 25 чисел
+* Создать коллекцию из чисел через BufferedReader
+* Ввести с клавиатуры 25 чисел
 * Вывести коллекцию на экран без сортировки
 * Сделать Quick Sort
 * Вывести после сортировки
-*
-* Ввести 100 чисел через рандом от 0 до 1000
-* Ввести в отдельном методе
-* Сделать сортировку Вставкой Insertion Sort
-*
 * Покрыть Unit тестами
 * */
-public class MyQuickSort {
+public class QuickSort {
     public static void main(String[] args) {
         ArrayList<Integer> array = createNewCollection();
         array.forEach(o -> System.out.print(o + " "));
         System.out.println();
-        quickSort(array, 0, array.size() - 1);
+        quickSort(array);
         array.forEach(o -> System.out.print(o + " "));
     }
 
@@ -44,14 +39,17 @@ public class MyQuickSort {
         return resultCollection;
     }
 
-    public static void quickSort(ArrayList<Integer> arrayList, int low, int high) {
+    public static void quickSort(ArrayList<Integer> arrayList) {
+        quickSortByIndices(arrayList, 0, arrayList.size() - 1);
+    }
+
+    public static void quickSortByIndices(ArrayList<Integer> arrayList, int low, int high) {
         if ((arrayList.size() == 0) || (arrayList == null)) {
             return;
         }
         if (low >= high) {
             return;
         }
-
         int middle = low + (high - low) / 2;
         int i = low;
         int j = high;
@@ -69,10 +67,10 @@ public class MyQuickSort {
             }
         }
         if (low < j) {
-            quickSort(arrayList, low, j);
+            quickSortByIndices(arrayList, low, j);
         }
         if (high > i) {
-            quickSort(arrayList, i, high);
+            quickSortByIndices(arrayList, i, high);
         }
     }
 }

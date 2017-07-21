@@ -4,9 +4,8 @@ import java.util.ArrayList;
 import java.util.Random;
 
 /*
-* Ввести 100 чисел через рандом от 0 до 1000
-* Ввести в отдельном методе
-* Сделать сортировку Вставкой Insertion Sort
+* Ввести в отдельном методе 100 чисел через рандом от 0 до 1000
+* Сделать Insertion Sort
 * Покрыть Unit тестами*/
 public class InsertionSort {
     public static void main(String[] args) {
@@ -17,7 +16,7 @@ public class InsertionSort {
         arrayList.forEach(o -> System.out.print(o + " "));
     }
 
-    private static ArrayList<Integer> createArrayList(){
+    private static ArrayList<Integer> createArrayList() {
         Random random = new Random();
         ArrayList<Integer> arrayList = new ArrayList<>();
         for (int i = 0; i < 100; i++) {
@@ -25,19 +24,20 @@ public class InsertionSort {
         }
         return arrayList;
     }
-    private static void insertIntoSort(ArrayList<Integer> arrayList) {
+
+    public static void insertIntoSort(ArrayList<Integer> arrayList) {
         int temp;
         int j;
-        for(int i = 0; i < arrayList.size() - 1; i++){
+        for (int i = 0; i < arrayList.size() - 1; i++) {
             if (arrayList.get(i) > arrayList.get(i + 1)) {
                 temp = arrayList.get(i + 1);
                 arrayList.set(i + 1, arrayList.get(i));
                 j = i;
                 while (j > 0 && temp < arrayList.get(j - 1)) {
-                    arrayList.set(j, arrayList.get(j-1));
+                    arrayList.set(j, arrayList.get(j - 1));
                     j--;
                 }
-                arrayList.set(j,temp);
+                arrayList.set(j, temp);
             }
         }
     }

@@ -1,0 +1,20 @@
+group 'tut.lyubaya.hueta'
+version '1.0-SNAPSHOT'
+
+apply plugin: 'java'
+
+repositories {
+    mavenCentral()
+}
+
+configurations {
+    testCompile.extendsFrom compileOnly
+}
+
+dependencies {
+
+    testCompile 'org.junit.jupiter:junit-jupiter-api:5.0.0-M4',
+            'org.mockito:mockito-core:+',
+            'org.hamcrest:java-hamcrest:+'
+    compile 'org.junit.jupiter:junit-jupiter-api'
+}
