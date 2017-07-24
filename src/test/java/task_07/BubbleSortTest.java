@@ -8,10 +8,11 @@ class BubbleSortTest {
     BubbleSort bubbleSort = new BubbleSort();
 
     @Test
-    void testMergeSort() {
+    void testBubbleSort() {
         int[] originalArray = {2, 3, 6, 3, 9, 9, 10, 0};
         bubbleSort.sort(originalArray);
         int[] expectedArray = {0, 2, 3, 3, 6, 9, 9, 10};
         assertArrayEquals(expectedArray, originalArray);
     }
 }
+
