@@ -47,20 +47,20 @@ public class QuickSort {
     }
 
     public static void quickSortByIndices(ArrayList<Integer> arrayList, int low, int high) {
-        if ((arrayList.size() == 0) || (arrayList == null)) {
+        if ((arrayList == null) || (arrayList.size() == 0)) {
             return;
         }
         if (low >= high) {
             return;
         }
-        int middle = low + (high - low) / 2;
+        int pivot = arrayList.get((high + low) / 2);
         int i = low;
         int j = high;
         while (i <= j) {
-            while (arrayList.get(i) < arrayList.get(middle)) {
+            while (arrayList.get(i) < pivot) {
                 i++;
             }
-            while (arrayList.get(middle) < arrayList.get(j)) {
+            while (pivot < arrayList.get(j)) {
                 j--;
             }
             if (i <= j) {
