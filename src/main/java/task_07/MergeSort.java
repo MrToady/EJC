@@ -5,11 +5,9 @@ import java.util.Random;
 
 public class MergeSort {
     private int[] array;
-    private int[] tempMergArr;
-    private int length;
+    private int[] tempArray;
 
     public static void main(String[] args) {
-
         MergeSort mergeSort = new MergeSort();
         int[] array = mergeSort.createArray();
         System.out.println(Arrays.toString(array));
@@ -24,19 +22,31 @@ public class MergeSort {
      */
     public int[] createArray() {
         Random random = new Random();
-        int[] result = new int[100];
+        int[] resultArray = new int[100];
         for (int i = 0; i < 100; i++) {
-            result[i] = random.nextInt(1001);
+            resultArray[i] = random.nextInt(1001);
         }
-        return result;
+        return resultArray;
     }
 
-    public void sort(int inputArr[]) {
-        this.array = inputArr;
-        this.length = inputArr.length;
-        this.tempMergArr = new int[length];
+    /**
+     * Applies @{code doMergeSort} to whole array
+     *
+     * @param inputArray - unsorted int array
+     */
+    public void sort(int inputArray[]) {
+        this.array = inputArray;
+        int length = inputArray.length;
+        this.tempArray = new int[length];
         doMergeSort(0, length - 1);
     }
+
+    /**
+     * Sorts an array in a specified range
+     *
+     * @param lowerIndex  - lower index
+     * @param higherIndex - higher index
+     */
 
     private void doMergeSort(int lowerIndex, int higherIndex) {
         if (lowerIndex < higherIndex) {
@@ -49,23 +59,23 @@ public class MergeSort {
 
     private void mergeParts(int lowerIndex, int middle, int higherIndex) {
         for (int i = lowerIndex; i <= higherIndex; i++) {
-            tempMergArr[i] = array[i];
+            tempArray[i] = array[i];
         }
         int i = lowerIndex;
         int j = middle + 1;
         int k = lowerIndex;
         while (i <= middle && j <= higherIndex) {
-            if (tempMergArr[i] <= tempMergArr[j]) {
-                array[k] = tempMergArr[i];
+            if (tempArray[i] <= tempArray[j]) {
+                array[k] = tempArray[i];
                 i++;
             } else {
-                array[k] = tempMergArr[j];
+                array[k] = tempArray[j];
                 j++;
             }
             k++;
         }
         while (i <= middle) {
-            array[k] = tempMergArr[i];
+            array[k] = tempArray[i];
             k++;
             i++;
         }
