@@ -25,7 +25,6 @@ class QuickSortTest {
         sortedOriginalArray.add(17);
         sortedOriginalArray.add(20);
         sortedOriginalArray.add(40);
-
         assertEquals(sortedOriginalArray, originalArray);
     }
 }

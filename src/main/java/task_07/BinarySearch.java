@@ -13,6 +13,13 @@ public class BinarySearch {
         System.out.println(binarySearch.search(array, 643));
     }
 
+    /**
+     * Creates an array of 99 random numbers from 0 to 1000
+     * Adds to this array the number given by parameter
+     *
+     * @param required number
+     * @return new array
+     */
     public int[] createArrayForSearch(int required) {
         Random random = new Random();
         int[] result = new int[100];
@@ -23,18 +30,21 @@ public class BinarySearch {
         return result;
     }
 
-    public int search(int[] array, int x) {
+    /**
+     * Binary search implementation
+     */
+    public int search(int[] arrayToSearch, int x) {
         int i = -1;
         int low = 0;
-        int high = array.length;
+        int high = arrayToSearch.length;
         int mid;
         while (low < high) {
             mid = (low + high) / 2;
-            if (x == array[mid]) {
+            if (x == arrayToSearch[mid]) {
                 i = mid;
                 break;
             } else {
-                if (x < array[mid]) {
+                if (x < arrayToSearch[mid]) {
                     high = mid;
                 } else {
                     low = mid + 1;

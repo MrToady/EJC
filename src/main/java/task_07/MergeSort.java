@@ -31,9 +31,14 @@ public class MergeSort {
         return result;
     }
 
-    public void sort(int inputArr[]) {
-        this.array = inputArr;
-        this.length = inputArr.length;
+    /**
+     * Merge sort implementation
+     *
+     * @param arrayToSort array what need to be sorted
+     */
+    public void sort(int[] arrayToSort) {
+        this.array = arrayToSort;
+        this.length = arrayToSort.length;
         this.tempMergArr = new int[length];
         doMergeSort(0, length - 1);
     }

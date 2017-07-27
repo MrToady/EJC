@@ -6,7 +6,6 @@ import java.util.Random;
 public class BubbleSort {
 
     public static void main(String[] args) {
-
         BubbleSort bubbleSort = new BubbleSort();
         int[] array = bubbleSort.createArray();
         System.out.println(Arrays.toString(array));
@@ -28,19 +27,19 @@ public class BubbleSort {
         return result;
     }
 
-
     /**
-     * Simple Bubble sort
+     * Bubble sort implementation
+     *
+     * @param arrayToSort array what need to be sorted
      */
-    public void sort(int[] array) {
+    public void sort(int[] arrayToSort) {
         int temp;
-        for (int i = 0; i < array.length - 1; i++) {
-            for (int j = array.length - 1; j > i; j--) {
-
-                if (array[j - 1] > array[j]) {
-                    temp = array[j - 1];
-                    array[j - 1] = array[j];
-                    array[j] = temp;
+        for (int i = 0; i < arrayToSort.length - 1; i++) {
+            for (int j = arrayToSort.length - 1; j > i; j--) {
+                if (arrayToSort[j - 1] > arrayToSort[j]) {
+                    temp = arrayToSort[j - 1];
+                    arrayToSort[j - 1] = arrayToSort[j];
+                    arrayToSort[j] = temp;
                 }
             }
         }
