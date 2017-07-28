@@ -87,7 +87,7 @@ public class Main {
         while (true) {
             try {
                 inputString = reader.readLine();
-                if (!inputString.matches("[A-z]*")) {
+                if (!inputString.matches("[A-zА-я]*")) {
                     System.out.println("Wrong input");
                 } else {
                     break;
