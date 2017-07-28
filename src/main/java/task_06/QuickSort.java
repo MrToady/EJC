@@ -6,14 +6,6 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Collections;
 
-/*
-* Создать коллекцию из чисел через BufferedReader
-* Ввести с клавиатуры 25 чисел
-* Вывести коллекцию на экран без сортировки
-* Сделать Quick Sort
-* Вывести после сортировки
-* Покрыть Unit тестами
-* */
 public class QuickSort {
     public static void main(String[] args) {
         ArrayList<Integer> array = createNewCollection();
@@ -31,8 +23,7 @@ public class QuickSort {
                 input = reader.readLine();
                 if (input.matches("[-+]?\\d+")) {
                     resultCollection.add(Integer.parseInt(input));
-                }
-                else {
+                } else {
                     System.out.println("Wrong input");
                 }
             }
@@ -46,7 +37,7 @@ public class QuickSort {
         quickSortByIndices(arrayList, 0, arrayList.size() - 1);
     }
 
-    public static void quickSortByIndices(ArrayList<Integer> arrayList, int low, int high) {
+    private static void quickSortByIndices(ArrayList<Integer> arrayList, int low, int high) {
         if ((arrayList == null) || (arrayList.size() == 0)) {
             return;
         }

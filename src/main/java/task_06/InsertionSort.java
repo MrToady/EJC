@@ -3,10 +3,6 @@ package task_06;
 import java.util.ArrayList;
 import java.util.Random;
 
-/*
-* Ввести в отдельном методе 100 чисел через рандом от 0 до 1000
-* Сделать Insertion Sort
-* Покрыть Unit тестами*/
 public class InsertionSort {
     public static void main(String[] args) {
         ArrayList<Integer> arrayList = createArrayList();
