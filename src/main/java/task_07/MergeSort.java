@@ -57,14 +57,14 @@ public class MergeSort {
         }
     }
 
-    private void mergeParts(int lowerIndex, int middle, int higherIndex) {
-        for (int i = lowerIndex; i <= higherIndex; i++) {
+    private void mergeParts(int bottomIndex, int middleIndex, int topIndex) {
+        for (int i = bottomIndex; i <= topIndex ; i++) {
             tempArray[i] = array[i];
         }
-        int i = lowerIndex;
-        int j = middle + 1;
-        int k = lowerIndex;
-        while (i <= middle && j <= higherIndex) {
+        int i = bottomIndex;
+        int j = middleIndex + 1;
+        int k = bottomIndex;
+        while (i <= middleIndex && j <= topIndex) {
             if (tempArray[i] <= tempArray[j]) {
                 array[k] = tempArray[i];
                 i++;
@@ -74,7 +74,7 @@ public class MergeSort {
             }
             k++;
         }
-        while (i <= middle) {
+        while (i <= middleIndex) {
             array[k] = tempArray[i];
             k++;
             i++;

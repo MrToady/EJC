@@ -35,19 +35,19 @@ public class BinarySearch {
      */
     public int search(int[] arrayToSearch, int x) {
         int i = -1;
-        int low = 0;
-        int high = arrayToSearch.length;
+        int bottomIndex = 0;
+        int topIndex = arrayToSearch.length;
         int mid;
-        while (low < high) {
-            mid = (low + high) / 2;
+        while (bottomIndex < topIndex) {
+            mid = (bottomIndex + topIndex) / 2;
             if (x == arrayToSearch[mid]) {
                 i = mid;
                 break;
             } else {
                 if (x < arrayToSearch[mid]) {
-                    high = mid;
+                    topIndex = mid;
                 } else {
-                    low = mid + 1;
+                    bottomIndex = mid + 1;
                 }
             }
         }

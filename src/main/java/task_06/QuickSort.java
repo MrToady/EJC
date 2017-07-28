@@ -37,16 +37,16 @@ public class QuickSort {
         quickSortByIndices(arrayList, 0, arrayList.size() - 1);
     }
 
-    private static void quickSortByIndices(ArrayList<Integer> arrayList, int low, int high) {
+    private static void quickSortByIndices(ArrayList<Integer> arrayList, int bottomIndex, int topIndex) {
         if ((arrayList == null) || (arrayList.size() == 0)) {
             return;
         }
-        if (low >= high) {
+        if (bottomIndex >= topIndex) {
             return;
         }
-        int pivot = arrayList.get((high + low) / 2);
-        int i = low;
-        int j = high;
+        int pivot = arrayList.get((topIndex + bottomIndex) / 2);
+        int i = bottomIndex;
+        int j = topIndex;
         while (i <= j) {
             while (arrayList.get(i) < pivot) {
                 i++;
@@ -60,11 +60,11 @@ public class QuickSort {
                 j--;
             }
         }
-        if (low < j) {
-            quickSortByIndices(arrayList, low, j);
+        if (bottomIndex < j) {
+            quickSortByIndices(arrayList, bottomIndex, j);
         }
-        if (high > i) {
-            quickSortByIndices(arrayList, i, high);
+        if (topIndex > i) {
+            quickSortByIndices(arrayList, i, topIndex);
         }
     }
 }
