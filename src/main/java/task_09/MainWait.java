@@ -23,7 +23,6 @@ public class MainWait {
         thread.start();
         synchronized (key) {
             key.wait();
-            System.err.println("дошли до вэйт");
         }
         System.err.println("finish...");
     }
