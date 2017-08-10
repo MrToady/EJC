@@ -4,16 +4,16 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.concurrent.ConcurrentHashMap;
+import java.util.Map;
 
 /**
  * Thread that reads information from the only input file and writes it to the buffer map
  */
 public class ReadingThread extends Thread {
     private File fileForParsing;
-    private ConcurrentHashMap<String, Long> timeMap;
+    private Map<String, Long> timeMap;
 
-    public ReadingThread(File fileForParsing, ConcurrentHashMap<String, Long> timeMap) {
+    public ReadingThread(File fileForParsing, Map<String, Long> timeMap) {
         this.fileForParsing = fileForParsing;
         this.timeMap = timeMap;
     }

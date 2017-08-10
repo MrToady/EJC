@@ -7,7 +7,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
-import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * Responsible for creating input files list,
@@ -44,6 +43,7 @@ public class DirectoryHandler {
             }
         }
         return csvFileList;
+
     }
 
     /**
@@ -53,18 +53,17 @@ public class DirectoryHandler {
      * @return true or false
      */
     private boolean isCSV(File file) {
-        String fileName = file.getName();
-        int indexOfExtension = fileName.lastIndexOf('.');
-        return indexOfExtension != -1 && fileName.substring(indexOfExtension).equalsIgnoreCase(".csv");
+        return file.getName()
+                .toLowerCase()
+                .endsWith(".csv");
     }
-
     /**
      * Sorts the buffer map
      * Writes information from the buffer map to the output table
      *
      * @param timeMap - map compiled from input files
      */
-    public void writeToOutputTable(ConcurrentHashMap<String, Long> timeMap) {
+    public void writeToOutputTable(Map<String, Long> timeMap) {
         TreeMap<String, Long> sortedTimeMap = new TreeMap<>(timeMap);
         try (FileWriter writer = new FileWriter(outputFile, false)) {
             writer.write("User;URL;Time\n");
