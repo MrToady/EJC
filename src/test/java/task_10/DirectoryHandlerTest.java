@@ -3,6 +3,7 @@ package task_10;
 import org.junit.jupiter.api.Test;
 
 import java.io.File;
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -24,7 +25,7 @@ class DirectoryHandlerTest {
         expectedFileSet.add(file14);
 
         DirectoryHandler directoryHandler = new DirectoryHandler(inputDirectory, outputDirectory, outputFileName);
-        Set<File> actualFileSet = new HashSet<>(directoryHandler.getAllCSVFiles());
+        Set<File> actualFileSet = new HashSet<>(Arrays.asList(directoryHandler.getAllCSVFiles()));
         assertEquals(expectedFileSet, actualFileSet);
     }
 }

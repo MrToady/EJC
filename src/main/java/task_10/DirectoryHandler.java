@@ -3,10 +3,8 @@ package task_10;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.TreeMap;
+import java.util.*;
+import java.util.stream.Collectors;
 
 /**
  * Responsible for creating input files list,
@@ -34,29 +32,10 @@ public class DirectoryHandler {
     /**
      * @return the full list of csv files in the directory
      */
-    public List<File> getAllCSVFiles() {
-        List<File> csvFileList = new ArrayList<>();
-        for (File file : inputDirectory.listFiles()
-                ) {
-            if (isCSV(file)) {
-                csvFileList.add(file);
-            }
-        }
-        return csvFileList;
-
+    public File[] getAllCSVFiles() {
+        return inputDirectory.listFiles((dir, name) -> name.toLowerCase().endsWith(".csv"));
     }
 
-    /**
-     * Checks if the file is CSV
-     *
-     * @param file to check
-     * @return true or false
-     */
-    private boolean isCSV(File file) {
-        return file.getName()
-                .toLowerCase()
-                .endsWith(".csv");
-    }
     /**
      * Sorts the buffer map
      * Writes information from the buffer map to the output table
