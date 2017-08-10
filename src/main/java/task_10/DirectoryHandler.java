@@ -9,8 +9,22 @@ import java.util.Map;
 import java.util.TreeMap;
 import java.util.concurrent.ConcurrentHashMap;
 
+/**
+ * Responsible for creating input files list,
+ * output table and storing information about input and output directories
+ */
 public class DirectoryHandler {
+    /**
+     * contains files for parsing
+     *
+     * @see Settings
+     */
     private File inputDirectory;
+    /**
+     * Path for the output file
+     *
+     * @see Settings
+     */
     private File outputFile;
 
     public DirectoryHandler(File inputDirectory, File outputDirectory, String outputFileName) {
@@ -18,6 +32,9 @@ public class DirectoryHandler {
         this.outputFile = new File(outputDirectory.getPath() + String.format("\\%s.csv", outputFileName));
     }
 
+    /**
+     * @return the full list of csv files in the directory
+     */
     public List<File> getAllCSVFiles() {
         List<File> csvFileList = new ArrayList<>();
         for (File file : inputDirectory.listFiles()
@@ -29,12 +46,24 @@ public class DirectoryHandler {
         return csvFileList;
     }
 
+    /**
+     * Checks if the file is CSV
+     *
+     * @param file to check
+     * @return true or false
+     */
     private boolean isCSV(File file) {
         String fileName = file.getName();
         int indexOfExtension = fileName.lastIndexOf('.');
         return indexOfExtension != -1 && fileName.substring(indexOfExtension).equalsIgnoreCase(".csv");
     }
 
+    /**
+     * Sorts the buffer map
+     * Writes information from the buffer map to the output table
+     *
+     * @param timeMap - map compiled from input files
+     */
     public void writeToOutputTable(ConcurrentHashMap<String, Long> timeMap) {
         TreeMap<String, Long> sortedTimeMap = new TreeMap<>(timeMap);
         try (FileWriter writer = new FileWriter(outputFile, false)) {
