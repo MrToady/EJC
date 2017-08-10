@@ -3,8 +3,8 @@ package task_10;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.*;
-import java.util.stream.Collectors;
+import java.util.Map;
+import java.util.TreeMap;
 
 /**
  * Responsible for creating input files list,
