@@ -21,19 +21,24 @@ public class InsertionSort {
         return arrayList;
     }
 
-    public static void insertIntoSort(ArrayList<Integer> arrayList) {
+    /**
+     * Insertion sort implementation
+     *
+     * @param arrayToSort array what need to be sorted
+     */
+    public static void insertIntoSort(ArrayList<Integer> arrayToSort) {
         int temp;
         int j;
-        for (int i = 0; i < arrayList.size() - 1; i++) {
-            if (arrayList.get(i) > arrayList.get(i + 1)) {
-                temp = arrayList.get(i + 1);
-                arrayList.set(i + 1, arrayList.get(i));
+        for (int i = 0; i < arrayToSort.size() - 1; i++) {
+            if (arrayToSort.get(i) > arrayToSort.get(i + 1)) {
+                temp = arrayToSort.get(i + 1);
+                arrayToSort.set(i + 1, arrayToSort.get(i));
                 j = i;
-                while (j > 0 && temp < arrayList.get(j - 1)) {
-                    arrayList.set(j, arrayList.get(j - 1));
+                while (j > 0 && temp < arrayToSort.get(j - 1)) {
+                    arrayToSort.set(j, arrayToSort.get(j - 1));
                     j--;
                 }
-                arrayList.set(j, temp);
+                arrayToSort.set(j, temp);
             }
         }
     }

@@ -33,8 +33,13 @@ public class QuickSort {
         return resultCollection;
     }
 
-    public static void quickSort(ArrayList<Integer> arrayList) {
-        quickSortByIndices(arrayList, 0, arrayList.size() - 1);
+    /**
+     * Quick sort implementation
+     *
+     * @param arrayToSort array what need to be sorted
+     */
+    public static void quickSort(ArrayList<Integer> arrayToSort) {
+        quickSortByIndices(arrayToSort, 0, arrayToSort.size() - 1);
     }
 
     private static void quickSortByIndices(ArrayList<Integer> arrayList, int bottomIndex, int topIndex) {
