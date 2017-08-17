@@ -6,35 +6,35 @@ import java.util.HashMap;
  * Class for storing text messages
  */
 public class Text {
-    public static final String GAME_WELCOME = "Здравствуйте! Перед вами трехмерная игра \"Морской бой\". \n" +
-            "На трехмерном поле размером 6х6х6 клеток размещены 10 кораблей - \n" +
-            "один четырехпалубный корабль\n" +
-            "два трехпалубных корабля\n" +
-            "три двухпалубных корабля\n" +
-            "и четыре однопалубных корабля.\n\n" +
-            "Корабли размещаются в случайном порядке. " +
-            "Участвуют два игрока. Каждый игрок вводит координаты своего выстрела из консоли.\n" +
-            "Победителем становится тот, кто первым поразит все корабли противника. Удачи!";
-    public static final String GAME_PLAY_AGAIN = "Хотели бы вы сыграть? (д/н): ";
-    public static final String GAME_START = "Начинаем новую партию!";
-    public static final String GAME_NO_START = "Игра завершена.";
-    public static final String GAME_WRONG_ANSWER = "Введите 'д' для положительного ответа или 'н' - для отрицательного";
-    public static final String GAME_COORDINATE = "Введите координату выстрела по оси ";
-    public static final String GAME_NUMBER_FORMAT = "Введите координату корректно.";
-    public static final String GAME_WRONG_NUMBER = "Введите число от 0 до %d";
-    public static final String GAME_WRONG_POINT = "Вы уже обстреливали эту точку.";
-    public static final String GAME_INJURED = "Попадание! Корабль ранен.";
-    public static final String GAME_KILLED = "Попадание! Корабль убит.";
-    public static final String FAIL = "Промах.";
-    public static final String WIN = "Все корабли противника уничтожены. Вы победили!";
-    public static final String FIRST_PLAYER_MOVE = "\nХодит первый игрок";
-    public static final String SECOND_PLAYER_MOVE = "\nХодит второй игрок";
+    public static final String GAME_WELCOME = "Hello! This is a three-dimensional \"Battle Ship\".\n" +
+            "Ten ships are arranged on a three-dimensional field of 6x6x6 points.\n" +
+            "One battleship,\n" +
+            "Two cruisers,\n" +
+            "Three submarines,\n" +
+            "And four destroyers.\n\n" +
+            "The ships are placed in a random order. " +
+            "Two players participate. Each player enters the coordinates of his shot from the console\n" +
+            "The winner is the one who first strikes all the enemy ships. Good luck!";
+    public static final String GAME_PLAY_AGAIN = "Want to play? (y/n): ";
+    public static final String GAME_START = "Let's start a new round!";
+    public static final String GAME_NO_START = "Game over.";
+    public static final String GAME_WRONG_ANSWER = "Enter 'y' for a positive answer or 'n' for a negative";
+    public static final String GAME_COORDINATE = "Enter the coordinate of the shot by ";
+    public static final String GAME_NUMBER_FORMAT = "Enter the coordinate correctly.";
+    public static final String GAME_WRONG_NUMBER = "Enter the number between 0 and %d";
+    public static final String GAME_WRONG_POINT = "You have already shot this point.";
+    public static final String GAME_INJURED = "Hit!";
+    public static final String GAME_KILLED = "Hit! Ship sank.";
+    public static final String FAIL = "Miss.";
+    public static final String WIN = "All enemy ships were destroyed. You won!";
+    public static final String FIRST_PLAYER_MOVE = "\nThe first player's turn";
+    public static final String SECOND_PLAYER_MOVE = "\nThe second player's turn";
     public static final HashMap<Integer, String> DECKS = new HashMap<>();
 
     static {
-        DECKS.put(4, "четырехпалубный корабль. \n");
-        DECKS.put(3, "трехпалубный корабль. \n");
-        DECKS.put(2, "двухпалубный корабль. \n");
-        DECKS.put(1, "однопалубный корабль. \n");
+        DECKS.put(4, "battleship. \n");
+        DECKS.put(3, "cruiser. \n");
+        DECKS.put(2, "submarine. \n");
+        DECKS.put(1, "destroyer. \n");
     }
 }

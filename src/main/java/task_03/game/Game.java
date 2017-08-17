@@ -50,10 +50,10 @@ public class Game {
             try {
                 answer = reader.readLine();
                 switch (answer) {
-                    case "д":
+                    case "y":
                         System.out.println(Text.GAME_START);
                         return true;
-                    case "н":
+                    case "n":
                         System.out.println(Text.GAME_NO_START);
                         reader.close();
                         return false;

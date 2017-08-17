@@ -46,13 +46,11 @@ public class Casino {
             try {
                 answer = reader.readLine();
                 switch (answer) {
-                    case "д":
+                    case "y":
                         System.out.println(Text.CASINO_START);
-                        //reader.close();
                         return true;
-                    case "н":
+                    case "n":
                         System.out.println(Text.CASINO_NO_START);
-                        //reader.close();
                         return false;
                     default:
                         System.out.println(Text.CASINO_WRONG_ANSWER);
@@ -78,7 +76,6 @@ public class Casino {
                     System.out.println(String.format(Text.CASINO_WRONG_NUMBER, Modifier.NUM_OF_PATRICIPANTS));
                 else {
                     System.out.println(String.format(Text.CASINO_YOUR_BET, betNumber));
-                    //reader.close();
                     answerIsCorrect = true;
                 }
             } catch (IOException e) {

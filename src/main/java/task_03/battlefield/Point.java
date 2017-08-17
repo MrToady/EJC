@@ -1,7 +1,7 @@
 package task_03.battlefield;
 
 /**
- * Describes abstract point in Cartesian coordinate system
+ * Describes abstract point in Cartesian reference system
  */
 public class Point {
     private int x;
